@@ -23,6 +23,10 @@ services:
       APP_ENV: "dev"
       APP_SECRET: "01d4362a8f6247be02d1892c81682438"
       APP_HOSTNAME: "coordinator.local"
+      MESSENGER_TRANSPORT_DSN: "doctrine://default?auto_setup=0"
+      OPEN_WEATHER_MAP_API_KEY: "2782634eed1c90284914691197d5acc4"
+      OPEN_WEATHER_MAP_API_URL: "https://api.openweathermap.org/data/2.5/weather?"
+      BORED_API_URL: "https://www.boredapi.com/api/activity?type="
   nginx:
     image: nginx:1.19
     ports:

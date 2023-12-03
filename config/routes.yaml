@@ -1,5 +1,14 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+weather_check:
+    path: /v1/isitraining
+    controller: 'App\Application\Weather\Controller\WeatherController::checkWeather'
+    methods: ['GET']
+
+whattodo:
+    path: /v1/whattodo
+    controller: 'App\Application\Activity\Controller\ActivityController::suggestActivity'
+    methods: ['GET']
+
+app.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
