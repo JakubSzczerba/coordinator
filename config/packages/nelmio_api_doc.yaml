@@ -1,0 +1,76 @@
+nelmio_api_doc:
+  areas:
+    path_patterns:
+      - ^/api(?!/doc$)
+    host_patterns:
+      - ^api\.
+  documentation:
+    info:
+      title: "Coordinator"
+      description: "API for checking weather conditions and activities via coordinates"
+      version: "1.0.0"
+    paths:
+      /v1/isitraining:
+        get:
+          summary: "Check if it's raining at a specific location"
+          description: "http://coordinator.local:8099/v1/isitraining?lat={52.2297}&lon={21.0122}"
+          parameters:
+            - name: lat
+              in: query
+              description: "Latitude of the location"
+              required: true
+              schema:
+                type: number
+              example: 52.2297
+            - name: lon
+              in: query
+              description: "Longitude of the location"
+              required: true
+              schema:
+                type: number
+              example: 21.0122
+          responses:
+            '200':
+              description: "Successful response"
+              content:
+                application/json:
+                  example:
+                    ok: "It is raining"
+            '400':
+              description: "Bad request - missing coordinates"
+              content:
+                application/json:
+                  example:
+                    error: "Coordinates required"
+      /v1/whattodo:
+        get:
+          summary: "Select activity depending on weather conditions"
+          description: "http://coordinator.local:8099/v1/whattodo?lat={52.2297}&lon={21.0122}"
+          parameters:
+            - name: lat
+              in: query
+              description: "Latitude of the location"
+              required: true
+              schema:
+                type: number
+              example: 52.2297
+            - name: lon
+              in: query
+              description: "Longitude of the location"
+              required: true
+              schema:
+                type: number
+              example: 21.0122
+          responses:
+            '200':
+              description: "Successful response"
+              content:
+                application/json:
+                  example:
+                    ok: "Activity: Write a list of things you are grateful for"
+            '400':
+              description: "Bad request - missing coordinates"
+              content:
+                application/json:
+                  example:
+                    error: "Coordinates required"
